@@ -2,8 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}OwlNight BDE!{% endblock %}</title>
+        {% block stylesheets %}
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/materialize.min.js') }}"></script>
+        <script src="{{ asset('js/fontawesome.min.js') }}"></script>
+        <link rel="stylesheet" src="{{ asset('css/fontawesome.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+      {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
