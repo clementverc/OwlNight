@@ -1,0 +1,15 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        partner_images:
+            uri_prefix:         '/OwlNight/OwlNight/public%app.path.partner_images%'
+            upload_destination: '%kernel.project_dir%/public/%app.path.partner_images%'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        association_images:
+            uri_prefix:         '/OwlNight/OwlNight/public%app.path.association_images%'
+            upload_destination: '%kernel.project_dir%/public/%app.path.association_images%'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        event_images:
+            uri_prefix:         '/OwlNight/OwlNight/public%app.path.event_images%'
+            upload_destination: '%kernel.project_dir%/public/%app.path.event_images%'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer

@@ -6,6 +6,7 @@ use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EventType extends AbstractType
 {
@@ -16,7 +17,9 @@ class EventType extends AbstractType
             ->add('subTitle')
             ->add('emplacement')
             ->add('price')
-            ->add('picture')
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+            ])
         ;
     }
 

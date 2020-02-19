@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
+ * @Vich\Uploadable
  */
 class Partner
 {
@@ -25,8 +26,15 @@ class Partner
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
-    private $picture;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="partner_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     public function __construct()
     {
@@ -49,15 +57,23 @@ class Partner
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function setImageFile(File $image = null)
     {
-        return $this->picture;
+        $this->imageFile = $image;
     }
 
-    public function setPicture(?string $picture): self
+    public function getImageFile()
     {
-        $this->picture = $picture;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -6,6 +6,7 @@ use App\Entity\Association;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AssociationType extends AbstractType
 {
@@ -13,7 +14,9 @@ class AssociationType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('picture')
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+            ])
         ;
     }
 

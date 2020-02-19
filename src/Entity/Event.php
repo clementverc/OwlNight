@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @Vich\Uploadable
  */
 class Event
 {
@@ -38,8 +41,15 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
-    private $picture;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="event_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     public function getId(): ?int
     {
@@ -94,15 +104,23 @@ class Event
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function setImageFile(File $image = null)
     {
-        return $this->picture;
+        $this->imageFile = $image;
     }
 
-    public function setPicture(?string $picture): self
+    public function getImageFile()
     {
-        $this->picture = $picture;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
     }
 }
