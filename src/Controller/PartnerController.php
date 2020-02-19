@@ -36,7 +36,7 @@ class PartnerController extends AbstractController
     }
 
     /**
-     * @Route("new", name="partner_new", methods={"GET","POST"})
+     * @Route("/new", name="partner_new", methods={"GET","POST"})
      */
     public function newPartner(Request $request): Response
     {
