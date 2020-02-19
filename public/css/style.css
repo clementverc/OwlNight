@@ -1,0 +1,29 @@
+.nav-wrapper{
+    background-color: transparent;
+}
+body{
+    background-repeat:no-repeat;
+    background-size: 100% 100vh;
+    background-attachment: fixed;
+}
+.card{
+    min-height: 100px;
+}
+
+.card .card-content p {
+    margin: 10%;
+    text-align: center;
+}
+.collection{
+    border: none;
+}
+.collection .collection-item {
+    border-bottom: none;
+}
+.eventTitle{
+    margin:0;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    color: white;
+  }
