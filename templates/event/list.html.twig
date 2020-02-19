@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row">
+<a class="btn" href="#">Retourner au tableau de bord</a>
+    <div class="container">
+        <div class="col s12 m12">
+            <div class="card">
+                <div class="card-content grey-text text-darken-4">
+                    <span class="card-title center">Administration des Evenements</span>
+                    <a class="btn right" href="{{ path('event_new') }}">Nouveau</a>
+                    <div class="row">
+                        <input id="searchfor" type="text" class="form-control col lg4 md5 s10" style="margin: auto;" placeholder="Rechercher" autofocus>
+                    </div>
+                    <div class="row margin-top-md">
+                        {% for event in events %}
+                            <div class="dataSearched col lg4 md4 s6 mt2">
+                                <a class="btn btn-block btn-secondary" href="{{ path('event_edit', { 'id': event.id }) }}">{{ event.name }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>       
+</div>         
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        
+        $.extend($.expr[":"],{
+            "containsIN": function(elem, i, match, array){
+                return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >=0;
+            }
+        });
+        $('#searchfor').keyup(function(){
+            var searchedText = $('#searchfor').val();
+            $('.dataSearched a:not(:containsIN("'+searchedText +'"))').closest('div').addClass('hide');
+            $('.dataSearched a:containsIN("'+searchedText +'")').closest('div').removeClass('hide');
+        })
+    </script>
+{% endblock %}
