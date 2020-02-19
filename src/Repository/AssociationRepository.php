@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Associassion;
+use App\Entity\Association;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Associassion|null find($id, $lockMode = null, $lockVersion = null)
- * @method Associassion|null findOneBy(array $criteria, array $orderBy = null)
- * @method Associassion[]    findAll()
- * @method Associassion[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Association|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Association|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Association[]    findAll()
+ * @method Association[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AssociassionRepository extends ServiceEntityRepository
+class AssociationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Associassion::class);
+        parent::__construct($registry, Association::class);
     }
 
     // /**
-    //  * @return Associassion[] Returns an array of Associassion objects
+    //  * @return Association[] Returns an array of Association objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AssociassionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Associassion
+    public function findOneBySomeField($value): ?Association
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')
