@@ -64,3 +64,11 @@
 
 # Embedded web-server pid file
 /.web-server-pid
+
+composer.lock
+public/images/associations
+public/images/partner
+public/images/event
+public/.DS_Store
+.DS_Store
+symfony.lock
