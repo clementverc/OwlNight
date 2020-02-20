@@ -20,8 +20,8 @@
                         </button>
                     </div>
                     <div class="">
-                        <a class="btn" href="{{ path('partner_list') }}">Retourner au listing</a>
-                        <a class="btn red" href="{{ path('partner_delete', { 'id': partner.id }) }}">Supprimer</a>
+                        <a class="btn" href="{{ path('admin_partner_list') }}">Retourner au listing</a>
+                        <a class="btn red" href="{{ path('admin_partner_delete', { 'id': partner.id }) }}">Supprimer</a>
                     </div>
                         {{ form_end(form) }}
                 </div>

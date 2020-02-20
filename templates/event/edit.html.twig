@@ -28,8 +28,8 @@
                         </button>
                     </div>
                     <div class="">
-                        <a class="btn" href="{{ path('event_list') }}">Retourner au listing</a>
-                        <a class="btn red" href="{{ path('event_delete', { 'id': event.id }) }}">Supprimer</a>
+                        <a class="btn" href="{{ path('admin_event_list') }}">Retourner au listing</a>
+                        <a class="btn red" href="{{ path('admin_event_delete', { 'id': event.id }) }}">Supprimer</a>
                     </div>
                         {{ form_end(form) }}
                 </div>

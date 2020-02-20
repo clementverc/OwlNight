@@ -2,20 +2,20 @@
 
 {% block body %}
 <div class="row">
-<a class="btn" href="#">Retourner au tableau de bord</a>
+<a class="btn" href="{{ path('admin_dashboard_index') }}">Retourner au tableau de bord</a>
     <div class="container">
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-content grey-text text-darken-4">
                     <span class="card-title center">Administration des Associations/Clubs</span>
-                    <a class="btn right" href="{{ path('association_new') }}">Nouveau</a>
+                    <a class="btn right" href="{{ path('admin_association_new') }}">Nouveau</a>
                     <div class="row">
                         <input id="searchfor" type="text" class="form-control col lg4 md5 s10" style="margin: auto;" placeholder="Rechercher" autofocus>
                     </div>
                     <div class="row margin-top-md">
                         {% for association in associations %}
                             <div class="dataSearched col lg4 md4 s6 mt2">
-                                <a class="btn btn-block btn-secondary" href="{{ path('association_edit', { 'id': association.id }) }}">{{ association.name }}</a>
+                                <a class="btn btn-block btn-secondary" href="{{ path('admin_association_edit', { 'id': association.id }) }}">{{ association.name }}</a>
                             </div>
                         {% endfor %}
                     </div>

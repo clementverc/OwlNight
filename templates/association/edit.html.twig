@@ -20,8 +20,8 @@
                         </button>
                     </div>
                     <div class="">
-                        <a class="btn" href="{{ path('association_list') }}">Retourner au listing</a>
-                        <a class="btn red" href="{{ path('association_delete', { 'id': association.id }) }}">Supprimer</a>
+                        <a class="btn" href="{{ path('admin_association_list') }}">Retourner au listing</a>
+                        <a class="btn red" href="{{ path('admin_association_delete', { 'id': association.id }) }}">Supprimer</a>
                     </div>
                         {{ form_end(form) }}
                 </div>
