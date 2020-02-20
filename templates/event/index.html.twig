@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}event index{% endblock %}
+{% block title %}Evenements{% endblock %}
 
 {% block body %}
 <body style="background-image:url('{{ asset('images/bg/bg_event.jpg') }}');">
@@ -17,24 +17,26 @@
                 </div>
                 <div class="col s2">
                 <img class="materialboxed" height="85" width="150" src="{{ vich_uploader_asset(event, 'imageFile') }}">
-                {# <div class="card blue-grey darken-1" style="min-height: 200px;background-image:url('');background-repeat:no-repeat;background-size: 100% 100%;background-attachment: cover;"> #}
-                {# </div> #}
             </li>
-            <div class="modal fade" id="modal{{ event.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl" role="document" >
-                    <div class="modal-content" style="background-color:red;">
-                        <div class="modal-header" style="border: none;z-index:1;">
-                            <h5 class="modal-title mt-3" style="color:#fff;background-color:#000;padding-left:1vh;padding-right:1vh;"><b>{{ event.name }}</b></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div id="modal{{ event.id }}" class="modal">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col s6">
+                            {% if event.name is defined and event.name is not null %}<h4>{{ event.name }}</h4>{% endif %}
+                            {% if event.subTitle is defined and event.subTitle is not null %}<p>{{ event.subTitle }}</p>{% endif %}
+                            {% if event.emplacement is defined and event.emplacement is not null %}<p>Lieu : {{ event.emplacement }}</p>{% endif %}
+                            {% if event.price is defined and event.price is not null %}<p>Tarif : {{ event.price }}</p>{% endif %}
                         </div>
-                        <div class="modal-body col-lg-6 col-md-8 col-sm-10 ml-4" style="color:#000;background-color:#fff;padding-top:4vh;margin-top:-4vh;margin-bottom:2vh;max-height:60vh;overflow:scroll;">
-                                {% if event.subtitle is defined and event.subtitle is not null %}<h3 style="font-size:12px;"><b>{{ event.subtitle }}</b></h3>{% endif %}
-                                {% if event.price is defined and event.price is not null %}<p style="font-size:12px; font-family:initial">Tarif : {{ event.price }}</p>{% endif %}
-                                <p>Pour pLus d'informations , contacter un membre du BDE via bde@my-digital-school</p>
+                        <div class="col s6 right">
+                            <img class="materialboxed" height="170" width="300" src="{{ vich_uploader_asset(event, 'imageFile') }}">
                         </div>
                     </div>
+                    <div class="col s12">
+                        {% if event.description is defined and event.description is not null %}<p style="overflow-wrap: break-word;">{{ event.description }}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn">OK</a>
                 </div>
             </div>
         {% else %}
@@ -42,10 +44,7 @@
                 <h2>Aucun Evenement pour le moment</h2>
             </div>
         {% endfor %}
-        </ul>
-        {% for event in events %}
-            
-        {% endfor %}
+    </ul>
 {% endblock %}
 {% block javascripts %}
 <script>

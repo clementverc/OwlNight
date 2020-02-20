@@ -2,7 +2,7 @@
 
 {% block title %}Acceuil{% endblock %}
 {% block body %}
-<body>
+<body style="background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(125,138,204,1) 35%, rgba(0,212,255,1) 100%);">
 <div class="container">
     <div class="row" style="margin-top:10vh;">
         <img class="responsive-image" style="padding-left:32%;" src="{{ asset('images/logo_text.png') }}"></img>
@@ -10,7 +10,7 @@
     <div class="row" style="margin-top:10vh;">
         <div class="col s4 m4">
             <a href="{{ path('event_index') }}">
-                <div class="card blue-grey darken-1">
+                <div class="card indigo lighten-2">
                     <div class="card-content white-text">
                         <p>Evénements</p>
                     </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="col s4 m4">
             <a href="{{ path('association_index') }}">
-                <div class="card blue-grey darken-1">
+                <div class="card pink darken-3">
                     <div class="card-content white-text">
                         <p>Associations / Clubs</p>
                     </div>
@@ -27,8 +27,8 @@
             </a>
         </div>
         <div class="col s4 m4">
-            <a href="#">
-                <div class="card blue-grey darken-1">
+            <a href="{{ path('news_index') }}">
+                <div class="card deep-purple lighten-2">
                     <div class="card-content white-text">
                         <p>Actualités</p>
                     </div>
@@ -39,7 +39,7 @@
     <div class="row ">
         <div class="col s4 m4 offset-s2 offset-m2">
             <a href="#">
-                <div class="card blue-grey darken-1">
+                <div class="card blue-grey lighten-1">
                     <div class="card-content white-text">
                         <p>Sondages</p>
                     </div>
@@ -48,7 +48,7 @@
         </div>
         <div class="col s4 m4 ">
             <a href="{{ path('partner_index') }}">
-                <div class="card blue-grey darken-1">
+                <div class="card light-blue darken-3">
                     <div class="card-content white-text">
                         <p>Partenariats</p>
                     </div>

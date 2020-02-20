@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+<body style="background-image:url('{{ asset('images/bg/bg_news.jpg') }}');">
+<div class="container">
+    <div class="row" style="margin-top:10vh;">
+    <ul class="collection col s12 m12 l6">
+        {% for news in news %}
+            <li class="row collection-item avatar" style="border-radius:22px;color:white;margin-top: inherit;background-color: rgba(0,0,0,.5);">
+                <div class="col s8">
+                    <h3 class="newsTitle truncate" title="{{ news.name }}">{{ news.name }}</h3>
+                    <p style="margin-top:20px"><small><a href="#" class="modal-trigger" data-target="modal{{ news.id }}">cliquez ici pour en savoir plus</a></small></p>
+                </div>
+                <div class="col s2">
+                <img class="materialboxed" height="85" width="150" src="{{ vich_uploader_asset(news, 'imageFile') }}">
+            </li>
+            <div id="modal{{ news.id }}" class="modal">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col s6">
+                            {% if news.name is defined and news.name is not null %}<h4>{{ news.name }}</h4>{% endif %}
+                            {% if news.subTitle is defined and news.subTitle is not null %}<p>{{ news.subTitle }}</p>{% endif %}
+                        </div>
+                        <div class="col s6 right">
+                            <img class="materialboxed" height="170" width="300" src="{{ vich_uploader_asset(news, 'imageFile') }}">
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        {% if news.description is defined and news.description is not null %}<p style="overflow-wrap: break-word;">{{ news.description }}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn">OK</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="center">
+                <h2>Aucun Evenement pour le moment</h2>
+            </div>
+        {% endfor %}
+        </ul>
+        </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function(){
+    $('.modal').modal();
+    $('.materialboxed').materialbox();
+  });
+</script>
+{% endblock %}

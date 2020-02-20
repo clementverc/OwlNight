@@ -7,10 +7,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
  * @Vich\Uploadable
  */
-class Event
+class News
 {
     /**
      * @ORM\Id()
@@ -20,7 +20,7 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
@@ -30,20 +30,10 @@ class Event
     private $subTitle;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $emplacement;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $price;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $description;
-
+    private $Description;
+    
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @var string
@@ -66,7 +56,7 @@ class Event
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -85,38 +75,14 @@ class Event
         return $this;
     }
 
-    public function getEmplacement(): ?string
-    {
-        return $this->emplacement;
-    }
-
-    public function setEmplacement(?string $emplacement): self
-    {
-        $this->emplacement = $emplacement;
-
-        return $this;
-    }
-
-    public function getPrice(): ?string
-    {
-        return $this->price;
-    }
-
-    public function setPrice(?string $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->Description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(?string $Description): self
     {
-        $this->description = $description;
+        $this->Description = $Description;
 
         return $this;
     }
