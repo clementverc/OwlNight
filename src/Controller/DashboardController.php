@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Service\ApiService;
 
 /**
  * @Route("/admin", name="admin_")
@@ -36,8 +37,18 @@ class DashboardController extends AbstractController
     /**
      * @Route("/association/list", name="association_list", methods={"GET"})
      */
-    public function listAssociation(AssociationRepository $associationRepository): Response
+    public function listAssociation(AssociationRepository $associationRepository, ApiService $apiService): Response
     {
+        try {
+            $response = $apiService->makeGet('/event');
+            $data = $response->getBody()->getContents();
+            // QUAND LA REQUETE EST OK
+            dump($data);exit;
+        } catch (\Exception $e) {
+            // QUAND IL Y A UNE ERREUR HTTP CODE 400 ou plus
+            dump($e);exit;
+        }
+
         return $this->render('association/list.html.twig', [
             'associations' => $associationRepository->findAll(),
         ]);
