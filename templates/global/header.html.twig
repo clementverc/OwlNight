@@ -8,13 +8,13 @@
     </ul>
     <ul class="left hide-on-med-and-down">
       <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-left:5px;" href="{{ path('event_index') }}">Evenements</a></li>
-      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-left:5px;" href="#">Sondages</a></li>
+      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-left:5px;" href="{{ path('sondages') }}">Sondages</a></li>
       <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-left:5px;" href="{{ path('association_index') }}">Associations / Clubs</a></li>
       <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-left:5px;" href="{{ path('partner_index') }}">Partenariats</a></li>
     </ul>
     <ul class="right hide-on-med-and-down">
-      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5)" href="#">connexion</a></li>
-      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5)" href="#">inscription</a></li>
+      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5)" href="{{ path('app_login') }}">connexion</a></li>
+      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5)" href="{{ path('app_register') }}">inscription</a></li>
     </ul>
     </div>
   </nav>
@@ -23,9 +23,9 @@
       <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="{{ path('event_index') }}">Evenements</a></li>
       <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="{{ path('association_index') }}">Associations / Clubs</a></li>
       <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="{{ path('partner_index') }}">Partenariats</a></li>
-      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="#">Sondages</a></li>
-      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="#">connexion</a></li>
-      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="#">inscription</a></li>
+      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="{{ path('sondages') }}">Sondages</a></li>
+      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="{{ path('app_login') }}">connexion</a></li>
+      <li><a class="btn" style="border-radius:22px; background-color: rgba(0,0,0,.5); margin-top:5vh;" href="{{ path('app_register') }}">inscription</a></li>
   </ul>
 
 {% endblock %}

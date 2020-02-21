@@ -16,7 +16,7 @@
                     <p style="margin-top:20px"><small><a href="#" class="modal-trigger" data-target="modal{{ event.id }}">cliquez ici pour en savoir plus</a></small></p>
                 </div>
                 <div class="col s2">
-                <img class="materialboxed" height="85" width="150" src="{{ vich_uploader_asset(event, 'imageFile') }}">
+                <img class="materialboxed" height="85" width="150" src="{{ asset('images/bg/bg_event.jpg') }}">
             </li>
             <div id="modal{{ event.id }}" class="modal">
                 <div class="modal-content">
@@ -28,7 +28,7 @@
                             {% if event.price is defined and event.price is not null %}<p>Tarif : {{ event.price }}</p>{% endif %}
                         </div>
                         <div class="col s6 right">
-                            <img class="materialboxed" height="170" width="300" src="{{ vich_uploader_asset(event, 'imageFile') }}">
+                            <img class="materialboxed" height="170" width="300" src="{{ asset('images/bg/bg_event.jpg') }}">
                         </div>
                     </div>
                     <div class="col s12">
