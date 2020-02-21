@@ -39,17 +39,18 @@ class DashboardController extends AbstractController
      */
     public function listAssociation(AssociationRepository $associationRepository, ApiService $apiService): Response
     {
-        try {
-            $response = $apiService->makeGet('/event');
-            $data = $response->getBody()->getContents();
-            // QUAND LA REQUETE EST OK
-            dump($data);exit;
-        } catch (\Exception $e) {
-            // QUAND IL Y A UNE ERREUR HTTP CODE 400 ou plus
-            dump($e);exit;
-        }
+        // try {
+        //     $response = $apiService->makeGet('/association');
+        //     $data = $response->getBody()->getContents();
+        //     // QUAND LA REQUETE EST OK
+        //     $data = json_decode($data, true);
+        // } catch (\Exception $e) {
+        //     // QUAND IL Y A UNE ERREUR HTTP CODE 400 ou plus
+        //     dump($e);exit;
+        // }
 
         return $this->render('association/list.html.twig', [
+            // 'associations' => $data,
             'associations' => $associationRepository->findAll(),
         ]);
     }
@@ -68,7 +69,7 @@ class DashboardController extends AbstractController
             $entityManager->persist($association);
             $entityManager->flush();
 
-            return $this->redirectToRoute('association_list');
+            return $this->redirectToRoute('admin_association_list');
         }
 
         return $this->render('association/new.html.twig', [
@@ -88,7 +89,7 @@ class DashboardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('association_list');
+            return $this->redirectToRoute('admin_association_list');
         }
 
         return $this->render('association/edit.html.twig', [
@@ -106,7 +107,7 @@ class DashboardController extends AbstractController
         $association = $associationRepository->find($id);
 
         if (!$association) {
-            return $this->redirectToRoute('association_list');
+            return $this->redirectToRoute('admin_association_list');
         }
 
         $em->remove($association);
@@ -118,10 +119,20 @@ class DashboardController extends AbstractController
     /**
      * @Route("/event/list", name="event_list", methods={"GET"})
      */
-    public function listEvent(EventRepository $eventRepository): Response
+    public function listEvent(EventRepository $eventRepository, ApiService $apiService): Response
     {
+        $mock = [];
+        try {
+            $response = $apiService->makeGet('/event');
+            $data = $response->getBody()->getContents();
+            // QUAND LA REQUETE EST OK
+            $data = json_decode($data, true);
+        } catch (\Exception $e) {
+            // QUAND IL Y A UNE ERREUR HTTP CODE 400 ou plus
+            dump($e);exit;
+        }
         return $this->render('event/list.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $data,
         ]);
     }
 
@@ -139,7 +150,7 @@ class DashboardController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
-            return $this->redirectToRoute('event_list');
+            return $this->redirectToRoute('admin_event_list');
         }
 
         return $this->render('event/new.html.twig', [
@@ -159,7 +170,7 @@ class DashboardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('event_list');
+            return $this->redirectToRoute('admin_event_list');
         }
 
         return $this->render('event/edit.html.twig', [
@@ -177,13 +188,13 @@ class DashboardController extends AbstractController
         $event = $eventRepository->find($id);
 
         if (!$event) {
-            return $this->redirectToRoute('event_list');
+            return $this->redirectToRoute('admin_event_list');
         }
 
         $em->remove($event);
         $em->flush();
 
-        return $this->redirectToRoute('event_list');
+        return $this->redirectToRoute('admin_event_list');
     }
 
     /**
@@ -210,7 +221,7 @@ class DashboardController extends AbstractController
             $entityManager->persist($news);
             $entityManager->flush();
 
-            return $this->redirectToRoute('news_list');
+            return $this->redirectToRoute('admin_news_list');
         }
 
         return $this->render('news/new.html.twig', [
@@ -230,7 +241,7 @@ class DashboardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('news_list');
+            return $this->redirectToRoute('admin_news_list');
         }
 
         return $this->render('news/edit.html.twig', [
@@ -248,13 +259,13 @@ class DashboardController extends AbstractController
         $news = $newsRepository->find($id);
 
         if (!$news) {
-            return $this->redirectToRoute('news_list');
+            return $this->redirectToRoute('admin_news_list');
         }
 
         $em->remove($news);
         $em->flush();
 
-        return $this->redirectToRoute('news_list');
+        return $this->redirectToRoute('admin_news_list');
     }
 
     /**
@@ -281,7 +292,7 @@ class DashboardController extends AbstractController
             $entityManager->persist($partner);
             $entityManager->flush();
 
-            return $this->redirectToRoute('partner_list');
+            return $this->redirectToRoute('admin_partner_list');
         }
 
         return $this->render('partner/new.html.twig', [
@@ -301,7 +312,7 @@ class DashboardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('partner_list');
+            return $this->redirectToRoute('admin_partner_list');
         }
 
         return $this->render('partner/edit.html.twig', [
@@ -319,12 +330,12 @@ class DashboardController extends AbstractController
         $partner = $partnerRepository->find($id);
 
         if (!$partner) {
-            return $this->redirectToRoute('partner_list');
+            return $this->redirectToRoute('admin_partner_list');
         }
 
         $em->remove($partner);
         $em->flush();
 
-        return $this->redirectToRoute('partner_list');
+        return $this->redirectToRoute('admin_partner_list');
     }
 }

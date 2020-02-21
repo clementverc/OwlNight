@@ -15,4 +15,22 @@ class DefaultController extends AbstractController
         return $this->render('home/index.html.twig', [
         ]);
     }
+
+    // public function userProfil()
+    // /**
+    //  * @Route("/userProfil", name="userProfil")
+    //  */
+    // {
+    //     return $this->render('profil/userProfil.html.twig', [
+    //     ]);
+    // }
+
+    /**
+     * @Route("/sondages", name="sondages")
+     */
+    public function indexSondage()
+    {
+        return $this->render('sondages/index.html.twig', [
+        ]);
+    }
 }
