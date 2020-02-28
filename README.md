@@ -16,7 +16,7 @@
 * npm start
 ```
 
-## Liste des cartographiessur (Branche master > SOA BDE):
+## Liste des cartographies sur (Branche master > SOA BDE):
 * Cartographie activite
 * Cartographie cloud aws
 * Cartographie des cas d'utilisations
